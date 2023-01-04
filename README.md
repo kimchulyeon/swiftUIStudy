@@ -62,17 +62,17 @@ struct ContentView: View {
   let hikes = Hike.all()
 
   var body: some View {
-   NavigationView {
-    List(hikes, id: \.name) { hike in
-      NavigationLink {
-        HikeDetail(hike: hike)
-      } label: {
-        HikeListItem(hike: hike)
+    NavigationView {
+      List(hikes, id: \.name) { hike in
+        NavigationLink {
+          HikeDetail(hike: hike)
+        } label: {
+          HikeListItem(hike: hike)
+        }
       }
-    }
 
-    .navigationTitle("Hikings")
-    .navigationBarTitleDisplayMode(.inline)
+      .navigationTitle("Hikings")
+      .navigationBarTitleDisplayMode(.inline)
     } 
   }
 }
