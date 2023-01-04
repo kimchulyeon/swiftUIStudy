@@ -68,7 +68,7 @@ struct ContentView: View {
 			}
 
 			.navigationTitle("Hikings")
-            .navigationBarTitleDisplayMode(.inline)
+		    	.navigationBarTitleDisplayMode(.inline)
 		}
 	}
 }
