@@ -1,13 +1,140 @@
 # swiftUI
 
-[텍스트 띄워보기](https://github.com/kimchulyeon/mySwiftStudy/blob/main/README.md#-텍스트-띄워보기)
-[subView로 분리](https://github.com/kimchulyeon/mySwiftStudy/blob/main/README.md#-subview로-빼기-리액트처럼-컴포넌트-분리-개념)
-[NavigationView](https://github.com/kimchulyeon/mySwiftStudy/blob/main/README.md#-navigationview)
-[List](https://github.com/kimchulyeon/mySwiftStudy/blob/main/README.md#-list)
+
+
+- [기초잡기](https://github.com/kimchulyeon/swiftUIStudy#-기초잡기)  
+
+- [실전](https://github.com/kimchulyeon/swiftUIStudy#-실전)  
+  - [텍스트 띄워보기](https://github.com/kimchulyeon/swiftUIStudy#-텍스트-띄워보기)  
+  - [subView로 분리](https://github.com/kimchulyeon/swiftUIStudy#-subView로-분리)  
+  - [NavigationView](https://github.com/kimchulyeon/swiftUIStudy#-navigationview)  
+  - [List](https://github.com/kimchulyeon/swiftUIStudy#-list)
 
 <br />
 
-### 🥑 텍스트 띄워보기
+## 🥑 기초잡기
+
+<br />
+
+### Text()
+
+```
+let number: Float = 30.9023
+
+Text(number.formatted(.currency(code: "USD")))  $30.9023
+Text(Date().formatted(date: .abbreviated, time: .omitted))  Sep 19, 2022
+Text(Date(), style: .timer)
+
+// 📌 modifier : ⭐️ cmd + 클릭 => Show SwiftUI Inspector ⭐️
+Text("Hello World")
+  .font(.largeTitle)
+  .font(Font.system(size:))
+  .font(Font.custom("Georgia" ,size:))
+  .fontWeight(.regular)
+  .foregroundColor(Color(hue: 1.0, saturation: 0.733, brightness: 0.842))
+  .background(Color.gray)
+  .background(Color.gray.gradient)
+  .border(Color.yellow, width: 10)
+  .cornerRadius(20)
+  .overlay(Color(red: 1, green: 1, blud: 0.3, opacity: 0.2).frame(width: 160, hegith: 40)).frame(width: height: alignment:)
+  .padding(24)
+  .padding(EdgeInsets(top: leading: bottom: trailing:))
+  .padding([.leading, .bottom], 50)
+  .underline()
+  .shadow(color: Color.gray, radius: 1, x: 1, y: 1)
+  .multilineTextAlignment(.center)
+  .lineSpaceing(5)
+  .textSelection(.enabled)
+  .truncationMode(.tail)
+```
+
+
+<br />
+
+### Color()
+```
+Color(red: 0.9, green: 0.5, blue: 0.2)
+Color("MyColorAtAssets")
+Color(red: 100/255, green: 200/255, blue: 250/255)
+  .frame(width: 250, height: 100)
+
+Text()
+  .background(Color.gray)
+  .background(Color.gray.gradient)
+  .border(Color.yellow, width: 10)
+  .cornerRadius(20)
+  .overlay(Color(red: 1, green: 1, blud: 0.3, opacity: 0.2).frame(width: 160, hegith: 40)).frame(width: height: alignment:)
+```
+
+<br />
+
+### Materials()
+```
+Text("Hello World")
+  .background(.thickMaterial)
+```
+
+<br />
+
+### Image()
+```
+Image("myImgAtAssets")
+  .frame(width: 250, height: 100)
+  .clipped() // frame 크기 만큼만의 이미지를 잘라서 보여준다.
+  .resizable() // frame 크기에 맞게 이미지 크기를 조절한다. (이미지가 찌그러지고 왜곡될 수 있다)
+  .aspectRatio(contentMode: .fill)
+  .scaledToFill()
+  .clipped
+  .aspectRatio(contentMode: .fit)
+  .scaledToFit()
+  .scaleEffect(CGSize(width: 0.5, height: 0.5))
+  .blur(radius: 5)
+
+// 📌 접근성 설정으로 폰트를 키우면 사이즈도 키워짐
+@ScaledMetric var customSize: CGFloat = 100
+
+Image("myImg")
+  .frame(width: customSize, height: customSize)
+```
+
+<br />
+
+### SF Symbol
+```
+Image(systemName: "house")
+  .font(Font.system(size: 100).weight(.semibold))
+  .symbolVariant(.fill)
+  .symbolRenderingMode(.multicolor)
+  .foregroundStyle(.red, .blue)
+  .imageScale(.large)
+
+Image(systemName: "dot.radiowaves.forward", variableValue: 0.8)
+```
+
+<br />
+
+### Label + Image
+```
+Label("hello world", systemImage: "envelope.circle")
+  .font(.largeTitle)
+  .labelStyle(.titleAndIcon)
+  .imageScale(.large)
+```
+
+<br />
+
+### Event Modifier
+```
+
+```
+
+<br />
+<br />
+
+## 🥑 실전
+
+<br />
+### 텍스트 띄워보기
 
 ```
 import SwiftUI
@@ -24,7 +151,7 @@ struct ContentView: View {
 
 <br />
 
-### 🥑 subView로 빼기 : 리액트처럼 컴포넌트 분리 개념
+### subView로 빼기 : 리액트처럼 컴포넌트 분리 개념
 
 - 커맨트 + 클릭 => extrach subview
 
@@ -59,7 +186,7 @@ struct HikeCell: View {
 
 <br />
 
-### 🥑 NavigationView
+### NavigationView
 
 전체를 씌운다
 
@@ -87,7 +214,7 @@ struct ContentView: View {
 }
 ```
 
-### 🥑 List
+### List
 
 ```
 let 어떤 데이터 = [["1", "2"], ["3", "4", "5"], ["ㅁㅇㄹㅁㅇㄹ", "ㅁㄴㅇ러ㅗㅁㄴㅇㄹ", "아ㅓㅗ니푸"]]
@@ -107,7 +234,7 @@ List(어떤 데이터, id: 데이터고유값) { 데이터 아이템 in
 
 <br />
 
-### 🥑 배열 속 배열 아이템 리스트
+### 배열 속 배열 아이템 리스트
 
 Hstack으로 임베드해서 하나의 리스트안에 수평으로 텍스트를 그린다
 ```
@@ -124,7 +251,7 @@ List(images, id: \.self) { image in
 
 <br />
 
-### 🥑 LazyVGrid
+### LazyVGrid
 
 LazyVGrid의 columns인자는 \[GridItem] 이여야한다.
 
